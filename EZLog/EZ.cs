@@ -27,7 +27,8 @@
                 {
                     directoryInfo = Directory.CreateDirectory(LogDirPath);
                 }
-                File.AppendAllText($"{LogDirPath}\\{now.ToString("yyyyMMdd")}_log.txt", $"[{selfDefinedCode}：{selfDefinedTag}]\n{detailedMsg}\n== {now.ToString("yyyy/MM/ddTHH:mm:ss.ffffff")} (UTC：{now.ToUniversalTime().ToString("yyyy/MM/ddTHH:mm:ss.ffffff")}) ==\n");
+                string filePath = Path.Join(LogDirPath, $"{now.ToString("yyyyMMdd")}_log.txt");
+                File.AppendAllText(filePath, $"[{selfDefinedCode}：{selfDefinedTag}]\n{detailedMsg}\n== {now.ToString("yyyy/MM/ddTHH:mm:ss.ffffff")} (UTC：{now.ToUniversalTime().ToString("yyyy/MM/ddTHH:mm:ss.ffffff")}) ==\n");
                 return (true, directoryInfo);
             }
             catch (Exception ex)
